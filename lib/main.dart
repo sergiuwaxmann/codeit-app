@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:codeitapp/utilities/app_theme.dart';
 import 'package:codeitapp/utilities/size_config.dart';
 
-import 'package:codeitapp/widgets/side_menu_row.dart';
-
-import 'package:codeitapp/data/side_menu_data.dart';
+import 'package:codeitapp/screens/login.dart';
 
 void main() {
   runApp(CodeITApp());
@@ -21,13 +20,11 @@ class CodeITApp extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: "Code IT",
-              home: Scaffold(
-                body: Center(
-                  child: SideMenuRow(
-                    sideMenuItem: sideMenuItemsData[0],
-                  ),
-                ),
-              ),
+              theme: AppTheme.lightTheme,
+              routes: {
+                LoginScreen.routeName: (ctx) => LoginScreen(),
+              },
+              home: LoginScreen(),
             );
           },
         );

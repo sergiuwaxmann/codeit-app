@@ -24,8 +24,8 @@ class SideMenuRow extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                sideMenuItem.background1,
-                sideMenuItem.background2,
+                sideMenuItem.color1,
+                sideMenuItem.color2,
               ],
             ),
           ),
