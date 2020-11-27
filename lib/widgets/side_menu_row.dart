@@ -1,53 +1,48 @@
 import 'package:flutter/material.dart';
 
+import 'package:codeitapp/utilities/size_config.dart';
+
+import 'package:codeitapp/widgets/side_menu_square_button.dart';
+
 import 'package:codeitapp/model/side_menu_item.dart';
 
 class SideMenuRow extends StatelessWidget {
   final SideMenuItem sideMenuItem;
+  final Function onTap;
 
   const SideMenuRow({
     Key key,
     @required this.sideMenuItem,
+    @required this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: 42,
-          height: 42,
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(14),
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                sideMenuItem.color1,
-                sideMenuItem.color2,
-              ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        children: [
+          SideMenuSquareButton(
+            icon: sideMenuItem.icon,
+            color1: sideMenuItem.color1,
+            color2: sideMenuItem.color2,
+          ),
+          SizedBox(
+            width: SizeConfig.isPortrait
+                ? 0.025 * SizeConfig.screenWidth
+                : 0.025 * SizeConfig.screenHeight,
+          ),
+          Container(
+            child: Text(
+              sideMenuItem.title,
+              style: Theme.of(context)
+                  .textTheme
+                  .headline1
+                  .copyWith(fontSize: 1.8 * SizeConfig.textMultiplier),
             ),
           ),
-          child: Icon(
-            sideMenuItem.icon,
-            color: Colors.white,
-          ),
-        ),
-        SizedBox(
-          width: 12,
-        ),
-        Container(
-          child: Text(
-            sideMenuItem.title,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w800,
-              color: Color(0xFF242629),
-            ),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
