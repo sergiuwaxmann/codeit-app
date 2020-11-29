@@ -7,7 +7,7 @@ class AppTheme {
 
   static const Color _accentColor = Color(0xFF0971FE);
 
-  static const Color _primaryColorLight = Color(0xFFF1F4FB);
+  static const Color _primaryColorLight = Color(0xFFE7EEFB);
   static const Color _highlightColorLight = Color(0xFFF5F8FF);
 
   static const Color _primaryColorDark = Color(0xFF1B1B1B);
@@ -47,6 +47,7 @@ class AppTheme {
 
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
+    scaffoldBackgroundColor: _primaryColorLight,
     accentColor: _accentColor,
     primaryColor: _primaryColorLight,
     highlightColor: _highlightColorLight,
@@ -54,6 +55,7 @@ class AppTheme {
   );
   static final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
+    scaffoldBackgroundColor: _primaryColorDark,
     accentColor: _accentColor,
     primaryColor: _primaryColorDark,
     highlightColor: _highlightColorDark,

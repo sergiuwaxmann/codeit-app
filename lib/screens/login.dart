@@ -15,7 +15,7 @@ class LoginScreen extends StatelessWidget {
     bool _isKeyboardShown = MediaQuery.of(context).viewInsets.bottom != 0;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Color(0xFFF1F4FB),
       body: Stack(
         children: [
           !_isKeyboardShown
