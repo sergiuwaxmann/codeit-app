@@ -15,7 +15,8 @@ class CourseLogo extends StatelessWidget {
   }) : super(key: key);
 
   double _calculateSize() {
-    double sizeMultiplier = SizeConfig.isPortrait ? 0.13 : 0.1;
+    double sizeMultiplier =
+        !SizeConfig.isTablet ? (SizeConfig.isPortrait ? 0.13 : 0.1) : 0.08;
     return sizeMultiplier *
         (SizeConfig.isPortrait
             ? SizeConfig.screenWidth
@@ -46,7 +47,6 @@ class CourseLogo extends StatelessWidget {
             ]),
         child: SvgPicture.asset(
           'assets/logos/${course.logo}',
-          fit: BoxFit.scaleDown, // ? Is it necessary?
         ),
       ),
     );

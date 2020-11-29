@@ -17,7 +17,8 @@ class RecentCourseCard extends StatelessWidget {
   }) : super(key: key);
 
   double _calculateSize() {
-    double sizeMultiplier = SizeConfig.isPortrait ? 0.6 : 0.4;
+    double sizeMultiplier =
+        !SizeConfig.isTablet && SizeConfig.isPortrait ? 0.6 : 0.4;
     return sizeMultiplier *
         (SizeConfig.isPortrait
             ? SizeConfig.screenWidth
@@ -103,6 +104,11 @@ class RecentCourseCard extends StatelessWidget {
                 ),
                 Expanded(
                   child: Container(
+                    margin: EdgeInsets.only(
+                      left: SizeConfig.isTablet && !SizeConfig.isPortrait
+                          ? 30
+                          : 0,
+                    ),
                     alignment: Alignment.bottomRight,
                     child: Image.asset(
                       'assets/illustrations/${course.illustration}',
