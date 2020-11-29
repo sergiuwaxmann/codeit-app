@@ -27,7 +27,7 @@ class SideMenuProfile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Sergiu",
+                'Sergiu',
                 style: Theme.of(context)
                     .textTheme
                     .headline1
@@ -40,7 +40,7 @@ class SideMenuProfile extends StatelessWidget {
                   : SizedBox.shrink(),
               SizeConfig.isPortrait
                   ? Text(
-                      "License ends on 01 Jan, 2020",
+                      'License ends on 01 Jan, 2020',
                       style: Theme.of(context)
                           .textTheme
                           .bodyText2

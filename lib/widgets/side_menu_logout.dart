@@ -20,8 +20,8 @@ class SideMenuLogout extends StatelessWidget {
         children: [
           SvgPicture.asset(
             Theme.of(context).brightness == Brightness.light
-                ? "assets/icons/logout.svg"
-                : "assets/icons/logout-dark.svg",
+                ? 'assets/icons/logout.svg'
+                : 'assets/icons/logout-dark.svg',
             width: 15,
             // fit: BoxFit.scaleDown,
           ),
@@ -29,7 +29,7 @@ class SideMenuLogout extends StatelessWidget {
             width: 10,
           ),
           Text(
-            "Log out",
+            'Log out',
             style: Theme.of(context).textTheme.bodyText2.copyWith(
                 fontSize: (!SizeConfig.isTablet ? 2 : 1.5) *
                     SizeConfig.textMultiplier),

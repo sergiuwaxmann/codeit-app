@@ -29,7 +29,6 @@ class SideMenuSquareButton extends StatelessWidget {
       width: _size,
       height: _size,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(14),
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -38,6 +37,7 @@ class SideMenuSquareButton extends StatelessWidget {
             color2,
           ],
         ),
+        borderRadius: BorderRadius.circular(14),
       ),
       child: Icon(
         icon,

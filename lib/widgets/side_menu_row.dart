@@ -24,8 +24,8 @@ class SideMenuRow extends StatelessWidget {
         children: [
           SideMenuSquareButton(
             icon: sideMenuItem.icon,
-            color1: sideMenuItem.color1,
-            color2: sideMenuItem.color2,
+            color1: sideMenuItem.bgColor1,
+            color2: sideMenuItem.bgColor2,
           ),
           SizedBox(
             width: SizeConfig.isPortrait
