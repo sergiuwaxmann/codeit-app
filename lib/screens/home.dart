@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:codeitapp/widgets/custom_safe_area.dart';
-import 'package:codeitapp/widgets/recent_course_card.dart';
+import 'package:codeitapp/widgets/header.dart';
 
+// ! NEXT:
+import 'package:codeitapp/widgets/recent_course_card.dart';
 import 'package:codeitapp/data/courses_data.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,8 +14,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomSafeArea(
-        child: RecentCourseCard(
-          course: recentCourses[0],
+        child: Column(
+          children: [
+            Header(),
+            RecentCourseCard(
+              course: recentCourses[0],
+            ),
+          ],
         ),
       ),
     );

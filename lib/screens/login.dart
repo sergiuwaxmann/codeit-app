@@ -11,7 +11,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ! Probably not the best practice:
+    // ! Probably not the best practice
     bool _isKeyboardShown = MediaQuery.of(context).viewInsets.bottom != 0;
 
     return Scaffold(
