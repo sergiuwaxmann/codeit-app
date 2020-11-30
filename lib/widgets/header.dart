@@ -6,7 +6,11 @@ import 'package:codeitapp/widgets/header_square_button.dart';
 import 'package:codeitapp/widgets/search_field.dart';
 
 class Header extends StatelessWidget {
-  double _calculateNotificationsMargin() {
+  const Header({
+    Key key,
+  }) : super(key: key);
+
+  double _calculateMargin() {
     double sizeMultiplier = !SizeConfig.isTablet ? 0.05 : 0.025;
     return sizeMultiplier *
         (SizeConfig.isPortrait
@@ -16,7 +20,7 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _notificationsMargin = _calculateNotificationsMargin();
+    double _margin = _calculateMargin();
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,7 +31,7 @@ class Header extends StatelessWidget {
         SearchField(),
         Container(
           margin: EdgeInsets.symmetric(
-            horizontal: _notificationsMargin,
+            horizontal: _margin,
           ),
           child: Icon(
             Icons.notifications,

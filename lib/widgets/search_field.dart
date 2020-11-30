@@ -6,6 +6,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:codeitapp/utilities/size_config.dart';
 
 class SearchField extends StatelessWidget {
+  const SearchField({
+    Key key,
+  }) : super(key: key);
+
   double _calculateSize() {
     double sizeMultiplier = !SizeConfig.isTablet ? 0.1 : 0.05;
     return sizeMultiplier *

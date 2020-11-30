@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:codeitapp/widgets/custom_safe_area.dart';
 import 'package:codeitapp/widgets/header.dart';
-
-// ! NEXT:
-import 'package:codeitapp/widgets/recent_course_card.dart';
-import 'package:codeitapp/data/courses_data.dart';
+import 'package:codeitapp/widgets/recents_courses.dart';
+import 'package:codeitapp/widgets/recents_headline.dart';
 
 class HomeScreen extends StatelessWidget {
   static const routeName = '/home';
@@ -17,9 +16,8 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             Header(),
-            RecentCourseCard(
-              course: recentCourses[0],
-            ),
+            RecentsHeadline(),
+            RecentsCourses(),
           ],
         ),
       ),

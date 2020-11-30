@@ -34,7 +34,7 @@ class CourseLogo extends StatelessWidget {
       child: Container(
         width: _size,
         height: _size,
-        padding: EdgeInsets.all(5),
+        padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(14),
