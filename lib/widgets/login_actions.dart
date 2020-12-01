@@ -8,10 +8,6 @@ import 'package:codeitapp/widgets/custom_text_field.dart';
 import 'package:codeitapp/widgets/primary_small_button.dart';
 
 class LoginActions extends StatelessWidget {
-  const LoginActions({
-    Key key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return CustomSafeArea(

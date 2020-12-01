@@ -89,7 +89,7 @@ class RecentCourseCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizeConfig.isPortrait
+                        SizeConfig.isTablet || SizeConfig.isPortrait
                             ? Text(
                                 course.subtitle,
                                 style: TextStyle(

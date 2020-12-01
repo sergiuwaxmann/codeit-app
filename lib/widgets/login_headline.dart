@@ -7,10 +7,6 @@ import 'package:codeitapp/utilities/size_config.dart';
 import 'package:codeitapp/widgets/custom_safe_area.dart';
 
 class LoginHeadline extends StatelessWidget {
-  const LoginHeadline({
-    Key key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return CustomSafeArea(

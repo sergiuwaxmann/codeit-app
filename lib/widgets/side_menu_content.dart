@@ -11,10 +11,6 @@ import 'package:codeitapp/widgets/side_menu_vertical_sized_box.dart';
 import 'package:codeitapp/data/side_menu_data.dart';
 
 class SideMenuContent extends StatelessWidget {
-  const SideMenuContent({
-    Key key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(

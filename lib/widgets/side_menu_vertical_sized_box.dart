@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:codeitapp/utilities/size_config.dart';
 
 class SideMenuVerticalSizedBox extends StatelessWidget {
-  const SideMenuVerticalSizedBox({
-    Key key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     double _sizeMultiplier = !SizeConfig.isTablet

@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:codeitapp/utilities/size_config.dart';
 
 class RecentsHeadline extends StatelessWidget {
-  const RecentsHeadline({
-    Key key,
-  }) : super(key: key);
-
   double _calculateMargin() {
     double sizeMultiplier = !SizeConfig.isTablet ? 0.05 : 0.025;
     return sizeMultiplier *

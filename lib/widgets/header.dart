@@ -6,10 +6,6 @@ import 'package:codeitapp/widgets/header_square_button.dart';
 import 'package:codeitapp/widgets/search_field.dart';
 
 class Header extends StatelessWidget {
-  const Header({
-    Key key,
-  }) : super(key: key);
-
   double _calculateMargin() {
     double sizeMultiplier = !SizeConfig.isTablet ? 0.05 : 0.025;
     return sizeMultiplier *

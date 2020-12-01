@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:codeitapp/utilities/size_config.dart';
-
 import 'package:codeitapp/utilities/custom_scroll_physics.dart';
+import 'package:codeitapp/utilities/size_config.dart';
 
 import 'package:codeitapp/widgets/recent_course_card.dart';
 
