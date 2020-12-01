@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:codeitapp/utilities/size_config.dart';
 
+import 'package:codeitapp/utilities/custom_scroll_physics.dart';
+
 import 'package:codeitapp/widgets/recent_course_card.dart';
 
 import 'package:codeitapp/data/courses_data.dart';
@@ -45,6 +47,56 @@ class _RecentsCoursesState extends State<RecentsCourses> {
     return list;
   }
 
+  PageView _buildPageView() {
+    return PageView.builder(
+      clipBehavior: Clip.none,
+      itemCount: recentCourses.length,
+      itemBuilder: (context, index) {
+        return Center(
+          child: Opacity(
+            opacity: _currentPage == index ? 1 : 0.8,
+            child: RecentCourseCard(
+              course: recentCourses[index],
+              isActive: _currentPage == index,
+              isFirst: _currentPage == 0,
+              isLast: _currentPage == recentCourses.length - 1,
+            ),
+          ),
+        );
+      },
+      controller: PageController(
+        initialPage: 0,
+        viewportFraction: 0.85,
+      ),
+      onPageChanged: (index) => setState(
+        () {
+          _currentPage = index;
+        },
+      ),
+    );
+  }
+
+  ListView _buildListView({itemDimension, margin}) {
+    return ListView.builder(
+      clipBehavior: Clip.none,
+      scrollDirection: Axis.horizontal,
+      physics: CustomScrollPhysics(
+        itemDimension: itemDimension,
+      ),
+      itemCount: recentCourses.length,
+      itemBuilder: (context, index) {
+        return Container(
+          margin: EdgeInsets.only(
+            right: index != recentCourses.length - 1 ? 40 : 0,
+          ),
+          child: RecentCourseCard(
+            course: recentCourses[index],
+          ),
+        );
+      },
+    );
+  }
+
   double _calculateHeight() {
     double sizeMultiplier =
         !SizeConfig.isTablet && SizeConfig.isPortrait ? 0.6 : 0.4;
@@ -57,44 +109,35 @@ class _RecentsCoursesState extends State<RecentsCourses> {
 
   @override
   Widget build(BuildContext context) {
+    double _height = _calculateHeight();
+
     return Column(
       children: [
         Container(
-          height: _calculateHeight(),
-          width: double.infinity,
-          child: PageView.builder(
-            clipBehavior: Clip.none,
-            // scrollDirection: Axis.horizontal,
-            itemCount: recentCourses.length,
-            itemBuilder: (context, index) {
-              return Center(
-                child: Opacity(
-                  opacity: _currentPage == index ? 1 : 0.8,
-                  child: RecentCourseCard(
-                    course: recentCourses[index],
-                    isActive: _currentPage == index,
+          height: _height,
+          // width: double.infinity,
+          child: !SizeConfig.isTablet && SizeConfig.isPortrait
+              ? _buildPageView()
+              : Container(
+                  margin: EdgeInsets.only(
+                    top: 15,
+                  ),
+                  child: _buildListView(
+                    itemDimension: _height,
                   ),
                 ),
-              );
-            },
-            controller: PageController(
-              initialPage: 0,
-              viewportFraction: 0.75,
-            ),
-            onPageChanged: (index) => setState(() {
-              _currentPage = index;
-            }),
-          ),
         ),
-        Container(
-          margin: EdgeInsets.only(
-            top: 15,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: _buildPageIndicator(),
-          ),
-        ),
+        !SizeConfig.isTablet && SizeConfig.isPortrait
+            ? Container(
+                margin: EdgeInsets.only(
+                  top: 15,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: _buildPageIndicator(),
+                ),
+              )
+            : SizedBox.shrink(),
       ],
     );
   }

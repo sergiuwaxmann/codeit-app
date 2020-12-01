@@ -5,7 +5,7 @@ class CustomScrollPhysics extends ScrollPhysics {
   final double itemDimension;
 
   CustomScrollPhysics({
-    this.itemDimension,
+    @required this.itemDimension,
     ScrollPhysics parent,
   }) : super(parent: parent);
 

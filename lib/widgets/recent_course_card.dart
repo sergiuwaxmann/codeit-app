@@ -10,12 +10,14 @@ import 'package:codeitapp/model/course.dart';
 
 class RecentCourseCard extends StatelessWidget {
   final Course course;
-  final bool isActive;
+  final bool isActive, isFirst, isLast;
 
   const RecentCourseCard({
     Key key,
     @required this.course,
-    @required this.isActive,
+    this.isActive = true,
+    this.isFirst = false,
+    this.isLast = false,
   }) : super(key: key);
 
   double _calculateSize() {
@@ -35,6 +37,8 @@ class RecentCourseCard extends StatelessWidget {
     return AnimatedContainer(
       padding: EdgeInsets.only(
         top: isActive ? 0 : 20,
+        left: isLast ? 60 : 0,
+        right: isFirst ? 60 : 0,
       ),
       child: Stack(
         alignment: Alignment.topRight,
