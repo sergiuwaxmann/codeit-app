@@ -12,7 +12,9 @@ class LoginHeadline extends StatelessWidget {
     return CustomSafeArea(
       alignment: Alignment.topCenter,
       child: Container(
-        margin: EdgeInsets.only(top: 0.1 * SizeConfig.screenWidth),
+        margin: EdgeInsets.only(
+          top: 0.1 * SizeConfig.screenWidth,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

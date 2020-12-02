@@ -7,6 +7,8 @@ import 'package:codeitapp/widgets/custom_safe_area.dart';
 import 'package:codeitapp/widgets/custom_text_field.dart';
 import 'package:codeitapp/widgets/primary_small_button.dart';
 
+import 'package:codeitapp/screens/home.dart';
+
 class LoginActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -87,7 +89,8 @@ class LoginActions extends StatelessWidget {
             ),
             PrimarySmallButton(
               text: "Log in",
-              onTap: () => {},
+              onTap: () => Navigator.of(context)
+                  .pushReplacementNamed(HomeScreen.routeName),
             ),
             SizedBox(
               height: 30,

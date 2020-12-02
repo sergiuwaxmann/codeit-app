@@ -10,6 +10,8 @@ import 'package:codeitapp/widgets/side_menu_vertical_sized_box.dart';
 
 import 'package:codeitapp/data/side_menu_data.dart';
 
+import 'package:codeitapp/screens/login.dart';
+
 class SideMenuContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -57,7 +59,8 @@ class SideMenuContent extends StatelessWidget {
             ),
             Spacer(),
             SideMenuLogout(
-              onTap: () => {},
+              onTap: () => Navigator.of(context)
+                  .pushReplacementNamed(LoginScreen.routeName),
             ),
           ],
         ),

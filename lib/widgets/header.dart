@@ -6,6 +6,13 @@ import 'package:codeitapp/widgets/header_square_button.dart';
 import 'package:codeitapp/widgets/search_field.dart';
 
 class Header extends StatelessWidget {
+  final sideMenuAnimation;
+
+  const Header({
+    Key key,
+    @required this.sideMenuAnimation,
+  }) : super(key: key);
+
   double _calculateMargin() {
     double sizeMultiplier = !SizeConfig.isTablet ? 0.05 : 0.025;
     return sizeMultiplier *
@@ -22,7 +29,7 @@ class Header extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         HeaderSquareButton(
-          onTap: () => {},
+          onTap: sideMenuAnimation,
         ),
         SearchField(),
         Container(
