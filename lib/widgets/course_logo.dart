@@ -29,7 +29,7 @@ class CourseLogo extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.only(
-        right: _size / (SizeConfig.isPortrait ? 1 : 1.5),
+        right: course != null ? _size / (SizeConfig.isPortrait ? 1 : 1.5) : 0,
       ),
       child: Container(
         width: _size,
@@ -46,7 +46,9 @@ class CourseLogo extends StatelessWidget {
               ),
             ]),
         child: SvgPicture.asset(
-          'assets/logos/${course.logo}',
+          course != null
+              ? 'assets/logos/${course.logo}'
+              : 'assets/icons/play.svg',
         ),
       ),
     );

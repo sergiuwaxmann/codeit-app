@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:codeitapp/utilities/custom_scroll_physics.dart';
 import 'package:codeitapp/utilities/size_config.dart';
 
-import 'package:codeitapp/widgets/recent_course_card.dart';
+import 'package:codeitapp/widgets/continue_watching_course_card.dart';
 
 import 'package:codeitapp/data/courses_data.dart';
 
-class RecentsCourses extends StatefulWidget {
+class ContinueWatchingCourses extends StatefulWidget {
   @override
-  _RecentsCoursesState createState() => _RecentsCoursesState();
+  _ContinueWatchingCoursesState createState() =>
+      _ContinueWatchingCoursesState();
 }
 
-class _RecentsCoursesState extends State<RecentsCourses> {
+class _ContinueWatchingCoursesState extends State<ContinueWatchingCourses> {
   int _currentPage = 0;
 
   Widget _indicator(bool isActive) {
@@ -40,7 +41,7 @@ class _RecentsCoursesState extends State<RecentsCourses> {
 
   List<Widget> _buildPageIndicator() {
     List<Widget> list = [];
-    for (var i = 0; i < recentCourses.length; i++) {
+    for (var i = 0; i < continueWatchingCourses.length; i++) {
       list.add(i == _currentPage ? _indicator(true) : _indicator(false));
     }
     return list;
@@ -49,16 +50,16 @@ class _RecentsCoursesState extends State<RecentsCourses> {
   PageView _buildPageView() {
     return PageView.builder(
       clipBehavior: Clip.none,
-      itemCount: recentCourses.length,
+      itemCount: continueWatchingCourses.length,
       itemBuilder: (context, index) {
         return Center(
           child: Opacity(
             opacity: _currentPage == index ? 1 : 0.8,
-            child: RecentCourseCard(
-              course: recentCourses[index],
+            child: ContinueWatchingCourseCard(
+              course: continueWatchingCourses[index],
               isActive: _currentPage == index,
               isFirst: _currentPage == 0,
-              isLast: _currentPage == recentCourses.length - 1,
+              isLast: _currentPage == continueWatchingCourses.length - 1,
             ),
           ),
         );
@@ -82,14 +83,14 @@ class _RecentsCoursesState extends State<RecentsCourses> {
       physics: CustomScrollPhysics(
         itemDimension: itemDimension,
       ),
-      itemCount: recentCourses.length,
+      itemCount: continueWatchingCourses.length,
       itemBuilder: (context, index) {
         return Container(
           margin: EdgeInsets.only(
-            right: index != recentCourses.length - 1 ? 40 : 0,
+            right: index != continueWatchingCourses.length - 1 ? 40 : 0,
           ),
-          child: RecentCourseCard(
-            course: recentCourses[index],
+          child: ContinueWatchingCourseCard(
+            course: continueWatchingCourses[index],
           ),
         );
       },
@@ -98,7 +99,7 @@ class _RecentsCoursesState extends State<RecentsCourses> {
 
   double _calculateHeight() {
     double sizeMultiplier =
-        !SizeConfig.isTablet && SizeConfig.isPortrait ? 0.6 : 0.4;
+        !SizeConfig.isTablet && SizeConfig.isPortrait ? 0.35 : 0.3;
     return sizeMultiplier *
             (SizeConfig.isPortrait
                 ? SizeConfig.screenWidth

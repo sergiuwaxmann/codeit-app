@@ -83,7 +83,7 @@ class _SideMenuState extends State<SideMenu> with TickerProviderStateMixin {
                     _sideMenuAnimationController.reverse();
                   },
                   child: Container(
-                    color: Colors.black.withOpacity(.25),
+                    color: Colors.black.withOpacity(0.25),
                   ),
                 ),
               ),

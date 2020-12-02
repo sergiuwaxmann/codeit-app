@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:codeitapp/utilities/size_config.dart';
+
+import 'package:codeitapp/widgets/continue_watching_panel.dart';
 import 'package:codeitapp/widgets/custom_safe_area.dart';
 import 'package:codeitapp/widgets/explore_courses.dart';
 import 'package:codeitapp/widgets/explore_headline.dart';
@@ -19,23 +22,30 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         body: Stack(
           children: [
-            SingleChildScrollView(
-              child: CustomSafeArea(
-                child: PageContentContainer(
-                  child: Column(
-                    children: [
-                      RecentsHeadline(),
-                      RecentsCourses(),
-                      ExploreHeadline(),
-                      ExploreCourses()
-                    ],
-                  ),
+            CustomSafeArea(
+              child: PageContentContainer(
+                bottomMargin: true,
+                child: Column(
+                  children: [
+                    Spacer(),
+                    RecentsHeadline(),
+                    RecentsCourses(),
+                    Spacer(),
+                    SizeConfig.isPortrait
+                        ? ExploreHeadline()
+                        : SizedBox.shrink(),
+                    SizeConfig.isPortrait
+                        ? ExploreCourses()
+                        : SizedBox.shrink(),
+                    SizeConfig.isPortrait ? Spacer() : SizedBox.shrink(),
+                  ],
                 ),
               ),
             ),
             SideMenu(
               sideMenuContent: SideMenuContent(),
             ),
+            ContinueWatchingPanel(),
           ],
         ),
       ),
