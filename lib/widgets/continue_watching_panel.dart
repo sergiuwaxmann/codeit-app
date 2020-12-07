@@ -4,6 +4,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import 'package:codeitapp/utilities/size_config.dart';
 
+import 'package:codeitapp/widgets/certificates_viewer.dart';
 import 'package:codeitapp/widgets/continue_watching_courses.dart';
 
 class ContinueWatchingPanel extends StatefulWidget {
@@ -35,7 +36,12 @@ class _ContinueWatchingPanelState extends State<ContinueWatchingPanel> {
             : BoxShadow(),
       ],
       minHeight: 0.1 * SizeConfig.screenHeight,
-      maxHeight: 0.6 * SizeConfig.screenHeight,
+      maxHeight: (!SizeConfig.isTablet
+              ? (SizeConfig.isPortrait ? 0.7 : 0.6)
+              : SizeConfig.isPortrait
+                  ? 0.4
+                  : 0.5) *
+          SizeConfig.screenHeight,
       onPanelSlide: (position) => setState(
         () {
           _isOpened = position > 0.1 ? true : false;
@@ -51,6 +57,7 @@ class _ContinueWatchingPanelState extends State<ContinueWatchingPanel> {
                     : SizeConfig.screenHeight),
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 height: !_isOpened ? 0.1 * SizeConfig.screenHeight : null,
@@ -84,7 +91,30 @@ class _ContinueWatchingPanelState extends State<ContinueWatchingPanel> {
                   ],
                 ),
               ),
+              SizeConfig.isTablet || !SizeConfig.isPortrait
+                  ? Spacer()
+                  : SizedBox.shrink(),
               ContinueWatchingCourses(),
+              !SizeConfig.isTablet && SizeConfig.isPortrait
+                  ? Container(
+                      margin: EdgeInsets.only(
+                        top: 30,
+                      ),
+                      child: Text(
+                        'Certificates',
+                        style: Theme.of(context).textTheme.headline1.copyWith(
+                            fontSize: 2.5 * SizeConfig.textMultiplier),
+                      ),
+                    )
+                  : SizedBox.shrink(),
+              !SizeConfig.isTablet && SizeConfig.isPortrait
+                  ? Expanded(
+                      child: CertificatesViewer(),
+                    )
+                  : SizedBox.shrink(),
+              SizeConfig.isTablet || !SizeConfig.isPortrait
+                  ? Spacer()
+                  : SizedBox.shrink(),
             ],
           ),
         ),

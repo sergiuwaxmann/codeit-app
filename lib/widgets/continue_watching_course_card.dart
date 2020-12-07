@@ -70,14 +70,14 @@ class ContinueWatchingCourseCard extends StatelessWidget {
                   isActive
                       ? BoxShadow(
                           offset: Offset(0, 20),
-                          blurRadius: 30,
+                          blurRadius: 20,
                           color: course.bgColor1.withOpacity(0.3),
                         )
                       : BoxShadow(),
                   isActive
                       ? BoxShadow(
                           offset: Offset(0, 20),
-                          blurRadius: 30,
+                          blurRadius: 20,
                           color: course.bgColor2.withOpacity(0.3),
                         )
                       : BoxShadow(),
