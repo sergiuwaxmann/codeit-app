@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:codeitapp/widgets/custom_safe_area.dart';
-import 'package:codeitapp/widgets/header.dart';
-
 class SideMenu extends StatefulWidget {
   final Widget sideMenuContent;
 
@@ -11,10 +8,10 @@ class SideMenu extends StatefulWidget {
     @required this.sideMenuContent,
   }) : super(key: key);
   @override
-  _SideMenuState createState() => _SideMenuState();
+  SideMenuState createState() => SideMenuState();
 }
 
-class _SideMenuState extends State<SideMenu> with TickerProviderStateMixin {
+class SideMenuState extends State<SideMenu> with TickerProviderStateMixin {
   AnimationController _sideMenuAnimationController;
   Animation<Offset> _sideMenuAnimation;
   Animation<double> _fadeAnimation;
@@ -49,6 +46,13 @@ class _SideMenuState extends State<SideMenu> with TickerProviderStateMixin {
     super.initState();
   }
 
+  Future<void> showSideMenu() async {
+    setState(() {
+      _sideMenuHidden = !_sideMenuHidden;
+    });
+    await _sideMenuAnimationController.forward();
+  }
+
   @override
   void dispose() {
     _sideMenuAnimationController.dispose();
@@ -57,50 +61,38 @@ class _SideMenuState extends State<SideMenu> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        CustomSafeArea(
-            alignment: Alignment.topLeft,
-            child: Header(
-              sideMenuAnimation: () {
-                setState(() {
-                  _sideMenuHidden = !_sideMenuHidden;
-                });
-                _sideMenuAnimationController.forward();
-              },
-            )),
-        IgnorePointer(
-          ignoring: _sideMenuHidden,
-          child: Stack(
-            children: [
-              FadeTransition(
-                opacity: _fadeAnimation,
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _sideMenuHidden = !_sideMenuHidden;
-                    });
-                    _sideMenuAnimationController.reverse();
+    return IgnorePointer(
+      ignoring: _sideMenuHidden,
+      child: Stack(
+        children: [
+          FadeTransition(
+            opacity: _fadeAnimation,
+            child: GestureDetector(
+              onTap: () {
+                setState(
+                  () {
+                    _sideMenuHidden = !_sideMenuHidden;
                   },
-                  child: Container(
-                    color: Colors.black.withOpacity(0.25),
-                  ),
-                ),
+                );
+                _sideMenuAnimationController.reverse();
+              },
+              child: Container(
+                color: Colors.black.withOpacity(0.25),
               ),
-              SlideTransition(
-                position: _sideMenuAnimation,
-                child: SafeArea(
-                  left: false,
-                  right: false,
-                  // top: SizeConfig.isPortrait ? true : false,
-                  bottom: false,
-                  child: widget.sideMenuContent,
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
-      ],
+          SlideTransition(
+            position: _sideMenuAnimation,
+            child: SafeArea(
+              left: false,
+              right: false,
+              // top: SizeConfig.isPortrait ? true : false,
+              bottom: false,
+              child: widget.sideMenuContent,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
