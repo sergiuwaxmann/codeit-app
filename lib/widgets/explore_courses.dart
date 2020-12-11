@@ -6,6 +6,8 @@ import 'package:codeitapp/widgets/explore_course_card.dart';
 
 import 'package:codeitapp/data/courses_data.dart';
 
+import 'package:codeitapp/screens/course.dart';
+
 class ExploreCourses extends StatelessWidget {
   double _calculateHeight() {
     double sizeMultiplier =
@@ -30,8 +32,21 @@ class ExploreCourses extends StatelessWidget {
             margin: EdgeInsets.only(
               right: index != exploreCourses.length - 1 ? 20 : 0,
             ),
-            child: ExploreCourseCard(
-              course: exploreCourses[index],
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CourseScreen(
+                      course: exploreCourses[index],
+                    ),
+                    fullscreenDialog: true,
+                  ),
+                );
+              },
+              child: ExploreCourseCard(
+                course: exploreCourses[index],
+              ),
             ),
           );
         },

@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:codeitapp/model/side_menu_item.dart';
 
@@ -11,7 +14,7 @@ var sideMenuItemsData = [
   ),
   SideMenuItem(
     title: "Courses",
-    icon: Icons.library_books,
+    icon: Platform.isIOS ? CupertinoIcons.book_solid : Icons.library_books,
     bgColor1: Color(0xFFFA7d75),
     bgColor2: Color(0xFFC23D61),
   ),
@@ -23,7 +26,7 @@ var sideMenuItemsData = [
   ),
   SideMenuItem(
     title: "Settings",
-    icon: Icons.settings,
+    icon: Platform.isIOS ? CupertinoIcons.settings_solid : Icons.settings,
     bgColor1: Color(0xFF4E62CC),
     bgColor2: Color(0xFF202A78),
   ),

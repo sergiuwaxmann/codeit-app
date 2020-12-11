@@ -53,11 +53,11 @@ class ExploreCourseCard extends StatelessWidget {
                     SizeConfig.isTablet || SizeConfig.isPortrait
                         ? Text(
                             course.subtitle,
-                            style: TextStyle(
-                              fontFamily: Platform.isIOS ? 'SF Pro Text' : null,
-                              fontSize: 1.5 * SizeConfig.textMultiplier,
-                              color: Colors.white.withOpacity(0.8),
-                            ),
+                            style:
+                                Theme.of(context).textTheme.bodyText2.copyWith(
+                                      fontSize: 1.5 * SizeConfig.textMultiplier,
+                                      color: Colors.white.withOpacity(0.8),
+                                    ),
                           )
                         : SizedBox.shrink(),
                     SizeConfig.isPortrait

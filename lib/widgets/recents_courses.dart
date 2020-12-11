@@ -7,6 +7,8 @@ import 'package:codeitapp/widgets/recent_course_card.dart';
 
 import 'package:codeitapp/data/courses_data.dart';
 
+import 'package:codeitapp/screens/course.dart';
+
 class RecentsCourses extends StatefulWidget {
   @override
   _RecentsCoursesState createState() => _RecentsCoursesState();
@@ -52,13 +54,26 @@ class _RecentsCoursesState extends State<RecentsCourses> {
       itemCount: recentCourses.length,
       itemBuilder: (context, index) {
         return Center(
-          child: Opacity(
-            opacity: _currentPage == index ? 1 : 0.8,
-            child: RecentCourseCard(
-              course: recentCourses[index],
-              isActive: _currentPage == index,
-              isFirst: _currentPage == 0,
-              isLast: _currentPage == recentCourses.length - 1,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CourseScreen(
+                    course: recentCourses[index],
+                  ),
+                  fullscreenDialog: true,
+                ),
+              );
+            },
+            child: Opacity(
+              opacity: _currentPage == index ? 1 : 0.8,
+              child: RecentCourseCard(
+                course: recentCourses[index],
+                isActive: _currentPage == index,
+                isFirst: _currentPage == 0,
+                isLast: _currentPage == recentCourses.length - 1,
+              ),
             ),
           ),
         );
@@ -88,8 +103,21 @@ class _RecentsCoursesState extends State<RecentsCourses> {
           margin: EdgeInsets.only(
             right: index != recentCourses.length - 1 ? 40 : 0,
           ),
-          child: RecentCourseCard(
-            course: recentCourses[index],
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CourseScreen(
+                    course: recentCourses[index],
+                  ),
+                  fullscreenDialog: true,
+                ),
+              );
+            },
+            child: RecentCourseCard(
+              course: recentCourses[index],
+            ),
           ),
         );
       },

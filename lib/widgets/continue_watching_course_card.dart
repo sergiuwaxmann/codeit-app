@@ -109,12 +109,13 @@ class ContinueWatchingCourseCard extends StatelessWidget {
                           children: [
                             Text(
                               course.subtitle,
-                              style: TextStyle(
-                                fontFamily:
-                                    Platform.isIOS ? 'SF Pro Text' : null,
-                                fontSize: 1.8 * SizeConfig.textMultiplier,
-                                color: Colors.white.withOpacity(0.8),
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  .copyWith(
+                                    fontSize: 1.8 * SizeConfig.textMultiplier,
+                                    color: Colors.white.withOpacity(0.8),
+                                  ),
                             ),
                             SizedBox(
                               height: 5,

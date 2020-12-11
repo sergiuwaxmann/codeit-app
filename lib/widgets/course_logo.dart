@@ -8,10 +8,12 @@ import 'package:codeitapp/model/course.dart';
 
 class CourseLogo extends StatelessWidget {
   final Course course;
+  final bool hasMargin;
 
   const CourseLogo({
     Key key,
     @required this.course,
+    this.hasMargin = true,
   }) : super(key: key);
 
   double _calculateSize() {
@@ -29,7 +31,9 @@ class CourseLogo extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.only(
-        right: course != null ? _size / (SizeConfig.isPortrait ? 1 : 1.5) : 0,
+        right: course != null && hasMargin
+            ? _size / (SizeConfig.isPortrait ? 1 : 1.5)
+            : 0,
       ),
       child: Container(
         width: _size,

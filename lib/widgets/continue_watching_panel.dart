@@ -91,9 +91,7 @@ class _ContinueWatchingPanelState extends State<ContinueWatchingPanel> {
                   ],
                 ),
               ),
-              SizeConfig.isTablet || !SizeConfig.isPortrait
-                  ? Spacer()
-                  : SizedBox.shrink(),
+              !SizeConfig.isPortrait ? Spacer() : SizedBox.shrink(),
               ContinueWatchingCourses(),
               !SizeConfig.isTablet && SizeConfig.isPortrait
                   ? Container(

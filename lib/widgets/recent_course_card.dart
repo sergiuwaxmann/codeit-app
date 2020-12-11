@@ -90,13 +90,18 @@ class RecentCourseCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizeConfig.isTablet || SizeConfig.isPortrait
-                            ? Text(
-                                course.subtitle,
-                                style: TextStyle(
-                                  fontFamily:
-                                      Platform.isIOS ? 'SF Pro Text' : null,
-                                  fontSize: 1.8 * SizeConfig.textMultiplier,
-                                  color: Colors.white.withOpacity(0.8),
+                            ? Hero(
+                                tag: course.subtitle,
+                                child: Text(
+                                  course.subtitle,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText2
+                                      .copyWith(
+                                        fontSize:
+                                            1.8 * SizeConfig.textMultiplier,
+                                        color: Colors.white.withOpacity(0.8),
+                                      ),
                                 ),
                               )
                             : SizedBox.shrink(),
@@ -105,13 +110,18 @@ class RecentCourseCard extends StatelessWidget {
                                 height: 5,
                               )
                             : SizedBox.shrink(),
-                        Text(
-                          course.title,
-                          style: Theme.of(context).textTheme.headline1.copyWith(
-                                fontSize: (SizeConfig.isPortrait ? 2.8 : 2.3) *
-                                    SizeConfig.textMultiplier,
-                                color: Colors.white,
-                              ),
+                        Hero(
+                          tag: course.title,
+                          child: Text(
+                            course.title,
+                            style:
+                                Theme.of(context).textTheme.headline1.copyWith(
+                                      fontSize:
+                                          (SizeConfig.isPortrait ? 2.8 : 2.3) *
+                                              SizeConfig.textMultiplier,
+                                      color: Colors.white,
+                                    ),
+                          ),
                         ),
                       ],
                     ),
@@ -124,9 +134,12 @@ class RecentCourseCard extends StatelessWidget {
                             : 0,
                       ),
                       alignment: Alignment.bottomRight,
-                      child: Image.asset(
-                        'assets/illustrations/${course.illustration}',
-                        fit: BoxFit.cover,
+                      child: Hero(
+                        tag: course.illustration,
+                        child: Image.asset(
+                          'assets/illustrations/${course.illustration}',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
@@ -134,7 +147,10 @@ class RecentCourseCard extends StatelessWidget {
               ),
             ),
           ),
-          CourseLogo(course: course),
+          Hero(
+            tag: course.logo,
+            child: CourseLogo(course: course),
+          ),
         ],
       ),
       duration: Duration(

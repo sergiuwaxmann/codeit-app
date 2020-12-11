@@ -7,6 +7,8 @@ import 'package:codeitapp/widgets/continue_watching_course_card.dart';
 
 import 'package:codeitapp/data/courses_data.dart';
 
+import 'package:codeitapp/screens/course.dart';
+
 class ContinueWatchingCourses extends StatefulWidget {
   @override
   _ContinueWatchingCoursesState createState() =>
@@ -53,13 +55,26 @@ class _ContinueWatchingCoursesState extends State<ContinueWatchingCourses> {
       itemCount: continueWatchingCourses.length,
       itemBuilder: (context, index) {
         return Center(
-          child: Opacity(
-            opacity: _currentPage == index ? 1 : 0.8,
-            child: ContinueWatchingCourseCard(
-              course: continueWatchingCourses[index],
-              isActive: _currentPage == index,
-              isFirst: _currentPage == 0,
-              isLast: _currentPage == continueWatchingCourses.length - 1,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CourseScreen(
+                    course: continueWatchingCourses[index],
+                  ),
+                  fullscreenDialog: true,
+                ),
+              );
+            },
+            child: Opacity(
+              opacity: _currentPage == index ? 1 : 0.8,
+              child: ContinueWatchingCourseCard(
+                course: continueWatchingCourses[index],
+                isActive: _currentPage == index,
+                isFirst: _currentPage == 0,
+                isLast: _currentPage == continueWatchingCourses.length - 1,
+              ),
             ),
           ),
         );
@@ -89,8 +104,21 @@ class _ContinueWatchingCoursesState extends State<ContinueWatchingCourses> {
           margin: EdgeInsets.only(
             right: index != continueWatchingCourses.length - 1 ? 40 : 0,
           ),
-          child: ContinueWatchingCourseCard(
-            course: continueWatchingCourses[index],
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CourseScreen(
+                    course: continueWatchingCourses[index],
+                  ),
+                  fullscreenDialog: true,
+                ),
+              );
+            },
+            child: ContinueWatchingCourseCard(
+              course: continueWatchingCourses[index],
+            ),
           ),
         );
       },
