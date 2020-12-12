@@ -4,6 +4,7 @@ import 'package:codeitapp/utilities/size_config.dart';
 
 import 'package:codeitapp/widgets/close_square_button.dart';
 import 'package:codeitapp/widgets/course_logo.dart';
+import 'package:codeitapp/widgets/play_square_button.dart';
 
 import 'package:codeitapp/model/course.dart';
 
@@ -150,6 +151,15 @@ class CourseHeadline extends StatelessWidget {
                     : SizedBox.shrink(),
               ],
             ),
+          ),
+        ),
+        Container(
+          height:
+              (SizeConfig.isPortrait ? 0.52 : 0.45) * SizeConfig.screenHeight,
+          alignment: Alignment.bottomRight,
+          child: SafeArea(
+            bottom: false,
+            child: PlaySquareButton(),
           ),
         ),
       ],
