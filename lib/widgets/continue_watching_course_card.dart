@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 
 import 'package:codeitapp/utilities/size_config.dart';
@@ -69,16 +67,16 @@ class ContinueWatchingCourseCard extends StatelessWidget {
                 boxShadow: [
                   isActive
                       ? BoxShadow(
+                          color: course.bgColor1.withOpacity(0.3),
                           offset: Offset(0, 20),
                           blurRadius: 20,
-                          color: course.bgColor1.withOpacity(0.3),
                         )
                       : BoxShadow(),
                   isActive
                       ? BoxShadow(
+                          color: course.bgColor2.withOpacity(0.3),
                           offset: Offset(0, 20),
                           blurRadius: 20,
-                          color: course.bgColor2.withOpacity(0.3),
                         )
                       : BoxShadow(),
                 ],

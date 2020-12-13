@@ -45,9 +45,14 @@ class CourseHeadline extends StatelessWidget {
             ),
             boxShadow: [
               BoxShadow(
+                color: course.bgColor1.withOpacity(0.3),
                 offset: Offset(0, 20),
                 blurRadius: 20,
-                color: course.bgColor1.withOpacity(0.3),
+              ),
+              BoxShadow(
+                color: course.bgColor2.withOpacity(0.3),
+                offset: Offset(0, 20),
+                blurRadius: 20,
               ),
             ],
           ),

@@ -4,7 +4,7 @@ class CourseNavigation extends StatelessWidget {
   Widget _buildIndicators(BuildContext context) {
     List<Widget> indicators = [];
 
-    for (var i = 0; i < 9; i++) {
+    for (var i = 0; i < 9; i++)
       indicators.add(
         Container(
           width: i == 0 ? 24 : 8,
@@ -24,7 +24,6 @@ class CourseNavigation extends StatelessWidget {
           ),
         ),
       );
-    }
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

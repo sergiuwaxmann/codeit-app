@@ -9,6 +9,7 @@ import 'package:codeitapp/utilities/size_config.dart';
 
 import 'package:codeitapp/widgets/course_headline.dart';
 import 'package:codeitapp/widgets/course_navigation.dart';
+import 'package:codeitapp/widgets/course_sections_panel_content.dart';
 import 'package:codeitapp/widgets/course_stats.dart';
 import 'package:codeitapp/widgets/course_text_content.dart';
 import 'package:codeitapp/widgets/view_all_button.dart';
@@ -52,12 +53,12 @@ class _CourseScreenState extends State<CourseScreen> {
         controller: _panelController,
         backdropEnabled: true,
         backdropColor: Colors.black.withOpacity(0.25),
+        color: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(
             30,
           ),
         ),
-        color: Theme.of(context).primaryColor,
         boxShadow: [
           Theme.of(context).brightness == Brightness.light
               ? BoxShadow(
@@ -69,7 +70,7 @@ class _CourseScreenState extends State<CourseScreen> {
         ],
         minHeight: 0,
         maxHeight: 0.9 * SizeConfig.screenHeight,
-        panel: Container(),
+        panel: CourseSectionsPanelContent(),
         body: Container(
           child: SingleChildScrollView(
             child: Column(

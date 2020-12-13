@@ -21,7 +21,7 @@ class CodeITApp extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: "Code IT",
-              theme: AppTheme.lightTheme,
+              theme: AppTheme.darkTheme,
               routes: {
                 LoginScreen.routeName: (ctx) => LoginScreen(),
                 HomeScreen.routeName: (ctx) => HomeScreen(),
