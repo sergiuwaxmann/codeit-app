@@ -40,15 +40,16 @@ class CourseLogo extends StatelessWidget {
         height: _size,
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(14),
-            boxShadow: [
-              BoxShadow(
-                offset: Offset(0, 4),
-                blurRadius: 16,
-                color: Colors.black.withOpacity(0.2),
-              ),
-            ]),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(14),
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(0, 4),
+              blurRadius: 16,
+              color: Colors.black.withOpacity(0.2),
+            ),
+          ],
+        ),
         child: SvgPicture.asset(
           course != null
               ? 'assets/logos/${course.logo}'
