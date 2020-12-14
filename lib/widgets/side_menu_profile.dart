@@ -40,7 +40,7 @@ class SideMenuProfile extends StatelessWidget {
                   : SizedBox.shrink(),
               SizeConfig.isPortrait
                   ? Text(
-                      'License ends on 01 Jan, 2020',
+                      'License ends on 01 Jan, 2021',
                       style: Theme.of(context)
                           .textTheme
                           .bodyText2

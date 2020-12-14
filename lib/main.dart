@@ -5,6 +5,7 @@ import 'package:codeitapp/utilities/size_config.dart';
 
 import 'package:codeitapp/screens/login.dart';
 import 'package:codeitapp/screens/home.dart';
+import 'package:codeitapp/screens/profile.dart';
 
 void main() {
   runApp(CodeITApp());
@@ -21,10 +22,11 @@ class CodeITApp extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: "Code IT",
-              theme: AppTheme.darkTheme,
+              theme: AppTheme.lightTheme,
               routes: {
                 LoginScreen.routeName: (ctx) => LoginScreen(),
                 HomeScreen.routeName: (ctx) => HomeScreen(),
+                ProfileScreen.routeName: (ctx) => ProfileScreen(),
               },
               home: LoginScreen(),
             );

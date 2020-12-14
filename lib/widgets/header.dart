@@ -40,10 +40,12 @@ class Header extends StatelessWidget {
             Icons.notifications,
           ),
         ),
-        // TODO: Add GestureDetector (Avatar)
-        CircleAvatar(
-          backgroundImage: AssetImage('assets/images/profile.jpg'),
-          radius: !SizeConfig.isTablet ? 18 : 22,
+        GestureDetector(
+          onTap: () => Navigator.of(context).pushNamed('/profile'),
+          child: CircleAvatar(
+            backgroundImage: AssetImage('assets/images/profile.jpg'),
+            radius: !SizeConfig.isTablet ? 18 : 22,
+          ),
         ),
       ],
     );

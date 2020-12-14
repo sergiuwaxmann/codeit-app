@@ -31,7 +31,7 @@ class SideMenuContent extends StatelessWidget {
           mainAxisSize: MainAxisSize.min, // ? Is it necessary?
           children: [
             SideMenuProfile(
-              onTap: () => {},
+              onTap: () => Navigator.of(context).pushNamed('/profile'),
             ),
             SizeConfig.isPortrait
                 ? SizedBox(

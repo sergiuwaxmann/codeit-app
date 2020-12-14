@@ -20,9 +20,9 @@ class CourseSectionsHeadline extends StatelessWidget {
         boxShadow: [
           Theme.of(context).brightness == Brightness.light
               ? BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
                   offset: Offset(0, -12),
                   blurRadius: 32,
-                  color: Colors.black.withOpacity(0.2),
                 )
               : BoxShadow(),
         ],
