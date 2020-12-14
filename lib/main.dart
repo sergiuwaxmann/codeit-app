@@ -8,7 +8,9 @@ import 'package:codeitapp/screens/home.dart';
 import 'package:codeitapp/screens/profile.dart';
 
 void main() {
-  runApp(CodeITApp());
+  runApp(
+    CodeITApp(),
+  );
 }
 
 class CodeITApp extends StatelessWidget {
