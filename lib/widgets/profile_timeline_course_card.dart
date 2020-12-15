@@ -81,7 +81,7 @@ class ProfileTimelineCourseCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            course.subtitle,
+                            course.section,
                             style:
                                 Theme.of(context).textTheme.bodyText2.copyWith(
                                       fontSize: 1.8 * SizeConfig.textMultiplier,
@@ -110,7 +110,9 @@ class ProfileTimelineCourseCard extends StatelessWidget {
             ),
           ),
         ),
-        CourseLogo(course: null),
+        course.section != 'Completed'
+            ? CourseLogo(course: null)
+            : SizedBox.shrink(),
       ],
     );
   }

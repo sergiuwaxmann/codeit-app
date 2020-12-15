@@ -106,7 +106,7 @@ class ContinueWatchingCourseCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              course.subtitle,
+                              course.section,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyText2
