@@ -18,8 +18,14 @@ class ProfileSettingsSquareButton extends StatelessWidget {
   Widget build(BuildContext context) {
     double _size = _calculateSize();
 
+    String _activeRouteName = ModalRoute.of(context).settings.name;
+
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        if (_activeRouteName != '/settings') {
+          Navigator.of(context).pushNamed('/settings');
+        }
+      },
       child: Container(
         width: _size,
         height: _size,

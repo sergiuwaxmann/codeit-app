@@ -51,7 +51,6 @@ class HomeScreen extends StatelessWidget {
             ContinueWatchingPanel(),
             SideMenu(
               key: _sideMenuStateKey,
-              sideMenuContent: SideMenuContent(),
             ),
           ],
         ),

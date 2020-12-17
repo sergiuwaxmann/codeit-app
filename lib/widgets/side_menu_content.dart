@@ -13,6 +13,13 @@ import 'package:codeitapp/data/side_menu_data.dart';
 import 'package:codeitapp/screens/login.dart';
 
 class SideMenuContent extends StatelessWidget {
+  final Function hideSideMenuFunction;
+
+  const SideMenuContent({
+    Key key,
+    this.hideSideMenuFunction,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -55,7 +62,10 @@ class SideMenuContent extends StatelessWidget {
             SideMenuVerticalSizedBox(),
             SideMenuRow(
               sideMenuItem: sideMenuItemsData[3],
-              onTap: () => {},
+              onTap: () {
+                hideSideMenuFunction();
+                Navigator.of(context).pushNamed('/settings');
+              },
             ),
             Spacer(),
             SideMenuLogout(

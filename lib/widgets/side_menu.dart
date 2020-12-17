@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class SideMenu extends StatefulWidget {
-  final Widget sideMenuContent;
+import 'package:codeitapp/widgets/side_menu_content.dart';
 
+class SideMenu extends StatefulWidget {
   const SideMenu({
     Key key,
-    @required this.sideMenuContent,
   }) : super(key: key);
+
   @override
   SideMenuState createState() => SideMenuState();
 }
@@ -53,6 +53,15 @@ class SideMenuState extends State<SideMenu> with TickerProviderStateMixin {
     await _sideMenuAnimationController.forward();
   }
 
+  Future<void> hideSideMenu() async {
+    setState(
+      () {
+        _sideMenuHidden = !_sideMenuHidden;
+      },
+    );
+    _sideMenuAnimationController.reverse();
+  }
+
   @override
   void dispose() {
     _sideMenuAnimationController.dispose();
@@ -68,14 +77,7 @@ class SideMenuState extends State<SideMenu> with TickerProviderStateMixin {
           FadeTransition(
             opacity: _fadeAnimation,
             child: GestureDetector(
-              onTap: () {
-                setState(
-                  () {
-                    _sideMenuHidden = !_sideMenuHidden;
-                  },
-                );
-                _sideMenuAnimationController.reverse();
-              },
+              onTap: () => hideSideMenu(),
               child: Container(
                 color: Colors.black.withOpacity(0.25),
               ),
@@ -88,7 +90,9 @@ class SideMenuState extends State<SideMenu> with TickerProviderStateMixin {
               right: false,
               // top: SizeConfig.isPortrait ? true : false,
               bottom: false,
-              child: widget.sideMenuContent,
+              child: SideMenuContent(
+                hideSideMenuFunction: () => hideSideMenu(),
+              ),
             ),
           ),
         ],
