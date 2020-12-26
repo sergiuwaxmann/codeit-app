@@ -11,7 +11,6 @@ import 'package:codeitapp/widgets/home_content_container.dart';
 import 'package:codeitapp/widgets/recents_courses.dart';
 import 'package:codeitapp/widgets/recents_headline.dart';
 import 'package:codeitapp/widgets/side_menu.dart';
-import 'package:codeitapp/widgets/side_menu_content.dart';
 
 class HomeScreen extends StatelessWidget {
   static const routeName = '/home';

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:video_player/video_player.dart';
 
 import 'package:codeitapp/utilities/size_config.dart';
 
 import 'package:codeitapp/model/course.dart';
+
+import 'package:codeitapp/screens/player.dart';
 
 class CourseLogo extends StatelessWidget {
   final Course course;
@@ -35,25 +38,44 @@ class CourseLogo extends StatelessWidget {
             ? _size / (SizeConfig.isPortrait ? 1 : 1.5)
             : 0,
       ),
-      child: Container(
-        width: _size,
-        height: _size,
-        padding: EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(14),
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(0, 4),
-              blurRadius: 16,
-              color: Colors.black.withOpacity(0.2),
-            ),
-          ],
-        ),
-        child: SvgPicture.asset(
-          course != null
-              ? 'assets/logos/${course.logo}'
-              : 'assets/icons/play.svg',
+      child: GestureDetector(
+        onTap: course != null
+            ? () {}
+            : () async {
+                VideoPlayerController videoPlayerController =
+                    VideoPlayerController.network(
+                        'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4');
+                await videoPlayerController.initialize();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PlayerScreen(
+                      videoPlayerController: videoPlayerController,
+                    ),
+                    fullscreenDialog: true,
+                  ),
+                );
+              },
+        child: Container(
+          width: _size,
+          height: _size,
+          padding: EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(14),
+            boxShadow: [
+              BoxShadow(
+                offset: Offset(0, 4),
+                blurRadius: 16,
+                color: Colors.black.withOpacity(0.2),
+              ),
+            ],
+          ),
+          child: SvgPicture.asset(
+            course != null
+                ? 'assets/logos/${course.logo}'
+                : 'assets/icons/play.svg',
+          ),
         ),
       ),
     );

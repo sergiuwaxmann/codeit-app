@@ -12,6 +12,7 @@ import 'package:codeitapp/screens/login.dart';
 import 'package:codeitapp/screens/home.dart';
 import 'package:codeitapp/screens/profile.dart';
 import 'package:codeitapp/screens/settings.dart';
+import 'package:codeitapp/screens/player.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,6 +50,7 @@ class CodeITApp extends StatelessWidget {
                 HomeScreen.routeName: (ctx) => HomeScreen(),
                 ProfileScreen.routeName: (ctx) => ProfileScreen(),
                 SettingsScreen.routeName: (ctx) => SettingsScreen(),
+                PlayerScreen.routeName: (ctx) => PlayerScreen(),
               },
               home: LoginScreen(),
             );

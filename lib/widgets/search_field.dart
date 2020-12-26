@@ -43,6 +43,7 @@ class SearchField extends StatelessWidget {
           borderRadius: BorderRadius.circular(14),
         ),
         child: TextField(
+          enabled: false,
           autocorrect: false,
           enableSuggestions: false,
           keyboardType: TextInputType.text,
