@@ -10,6 +10,7 @@ class CustomTextField extends StatelessWidget {
   final IconData icon, cupertinoIcon;
   final String hint;
   final bool obscureText;
+  final Function validator, onSaved, onFieldSubmitted;
 
   const CustomTextField({
     Key key,
@@ -19,6 +20,9 @@ class CustomTextField extends StatelessWidget {
     @required this.cupertinoIcon,
     @required this.hint,
     this.obscureText = false,
+    @required this.validator,
+    @required this.onSaved,
+    this.onFieldSubmitted,
   }) : super(key: key);
 
   @override
@@ -46,7 +50,14 @@ class CustomTextField extends StatelessWidget {
           ),
           hintText: hint,
           border: InputBorder.none,
+          errorStyle: Theme.of(context).textTheme.bodyText2.copyWith(
+                fontSize: 1.5 * SizeConfig.textMultiplier,
+                color: Colors.red.withOpacity(0.8),
+              ),
         ),
+        validator: validator,
+        onSaved: onSaved,
+        onFieldSubmitted: onFieldSubmitted,
       ),
     );
   }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import 'package:codeitapp/providers/auth_notifier.dart';
 import 'package:codeitapp/utilities/size_config.dart';
 
 class ProfileUserDetails extends StatelessWidget {
@@ -37,7 +40,7 @@ class ProfileUserDetails extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Sergiu',
+              Provider.of<AuthNotifier>(context, listen: false).name,
               style: Theme.of(context)
                   .textTheme
                   .headline1

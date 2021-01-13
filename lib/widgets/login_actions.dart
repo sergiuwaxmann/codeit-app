@@ -1,15 +1,69 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+import 'package:provider/provider.dart';
+
+import 'package:codeitapp/providers/auth_notifier.dart';
+
+import 'package:codeitapp/utilities/form_validator.dart';
+import 'package:codeitapp/utilities/http_exception.dart';
 import 'package:codeitapp/utilities/size_config.dart';
 
 import 'package:codeitapp/widgets/custom_safe_area.dart';
 import 'package:codeitapp/widgets/custom_text_field.dart';
+import 'package:codeitapp/widgets/login_alert_dialog.dart';
 import 'package:codeitapp/widgets/primary_small_button.dart';
 
-import 'package:codeitapp/screens/home.dart';
+class LoginActions extends StatefulWidget {
+  @override
+  _LoginActionsState createState() => _LoginActionsState();
+}
 
-class LoginActions extends StatelessWidget {
+class _LoginActionsState extends State<LoginActions> {
+  final _formKey = GlobalKey<FormState>();
+  String _email, _password;
+
+  bool _isFormValid = true;
+
+  Future<void> _trySubmit() async {
+    _isFormValid = _formKey.currentState.validate();
+    FocusScope.of(context).unfocus();
+    if (_isFormValid) {
+      _formKey.currentState.save();
+      await _login(_email, _password);
+      if (Provider.of<AuthNotifier>(context, listen: false).isLoggedIn) {
+        Navigator.of(context).pushReplacementNamed('/home');
+      }
+    }
+  }
+
+  Future<void> _login(String email, String password) async {
+    try {
+      await Provider.of<AuthNotifier>(context, listen: false)
+          .login(email, password);
+    } on HttpException catch (error) {
+      var errorMessage = 'Authentication failed.';
+      if (error.toString().contains('User not found') ||
+          error.toString().contains('Wrong password'))
+        errorMessage = 'Incorrect username or password.';
+      _showDialog(errorMessage);
+    } catch (error) {
+      _showDialog('Authentication failed. Please try again later.');
+    }
+  }
+
+  void _showDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return LoginAlertDialog(
+          body: message,
+        );
+      },
+      barrierColor: Colors.black.withOpacity(0.25),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomSafeArea(
@@ -39,6 +93,9 @@ class LoginActions extends StatelessWidget {
               height: 30,
             ),
             Container(
+              padding: EdgeInsets.symmetric(
+                vertical: !_isFormValid ? 10 : 0,
+              ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
                   15,
@@ -57,31 +114,40 @@ class LoginActions extends StatelessWidget {
                       : BoxShadow(),
                 ],
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CustomTextField(
-                    textInputType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                    icon: Icons.mail,
-                    cupertinoIcon: CupertinoIcons.mail_solid,
-                    hint: "Email",
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Divider(
-                      color: Colors.black.withOpacity(0.2),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CustomTextField(
+                      textInputType: TextInputType.emailAddress,
+                      textInputAction: TextInputAction.next,
+                      icon: Icons.mail,
+                      cupertinoIcon: CupertinoIcons.mail_solid,
+                      hint: "Email",
+                      validator: (value) => FieldValidator.validateEmail(value),
+                      onSaved: (value) => _email = value.trim(),
                     ),
-                  ),
-                  CustomTextField(
-                    obscureText: true,
-                    textInputType: TextInputType.text,
-                    textInputAction: TextInputAction.go,
-                    icon: Icons.lock,
-                    cupertinoIcon: CupertinoIcons.lock_fill,
-                    hint: "Password",
-                  ),
-                ],
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Divider(
+                        color: Colors.black.withOpacity(0.2),
+                      ),
+                    ),
+                    CustomTextField(
+                      obscureText: true,
+                      textInputType: TextInputType.text,
+                      textInputAction: TextInputAction.go,
+                      icon: Icons.lock,
+                      cupertinoIcon: CupertinoIcons.lock_fill,
+                      hint: "Password",
+                      validator: (value) =>
+                          FieldValidator.validatePassword(value),
+                      onSaved: (value) => _password = value.trim(),
+                      onFieldSubmitted: (_) => _trySubmit(),
+                    ),
+                  ],
+                ),
               ),
             ),
             SizedBox(
@@ -89,8 +155,7 @@ class LoginActions extends StatelessWidget {
             ),
             PrimarySmallButton(
               text: "Log in",
-              onTap: () => Navigator.of(context)
-                  .pushReplacementNamed(HomeScreen.routeName),
+              onTap: _trySubmit,
             ),
             SizedBox(
               height: 30,
@@ -99,7 +164,10 @@ class LoginActions extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
-                  onTap: () => {},
+                  onTap: () {
+                    print("Username: waxmann.sergiu@me.com");
+                    print("Password: codeitpass");
+                  },
                   child: Text(
                     "Forgot password?",
                     style: Theme.of(context).textTheme.bodyText1.copyWith(

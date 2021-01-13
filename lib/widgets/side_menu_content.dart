@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import 'package:codeitapp/providers/auth_notifier.dart';
+
 import 'package:codeitapp/utilities/size_config.dart';
 
 import 'package:codeitapp/widgets/custom_safe_area.dart';
@@ -69,8 +73,12 @@ class SideMenuContent extends StatelessWidget {
             ),
             Spacer(),
             SideMenuLogout(
-              onTap: () => Navigator.of(context)
-                  .pushReplacementNamed(LoginScreen.routeName),
+              onTap: () async {
+                await Provider.of<AuthNotifier>(context, listen: false)
+                    .logout();
+                Navigator.of(context)
+                    .pushReplacementNamed(LoginScreen.routeName);
+              },
             ),
           ],
         ),
