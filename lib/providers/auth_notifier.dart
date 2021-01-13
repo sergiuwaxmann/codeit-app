@@ -31,7 +31,7 @@ class AuthNotifier with ChangeNotifier {
 
   Future<void> login(String email, String password) async {
     final encryptedEmail = encryptAES(email);
-    final url = 'https://www.sickode.com/APIs/codeit/login.php';
+    final url = 'https://www.sickode.com/APIs/codeit/login.php?access=@SKWD/SW';
 
     try {
       final response = await http.post(
