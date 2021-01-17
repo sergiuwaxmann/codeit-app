@@ -44,10 +44,8 @@ class AuthNotifier with ChangeNotifier {
       final jsonData = json.decode(response.body);
 
       if (jsonData['status'] == 404) {
-        print("404");
         throw HttpException(jsonData['message']);
       } else if (jsonData['status'] == 403) {
-        print("403");
         throw HttpException(jsonData['message']);
       } else {
         _idUser = jsonData['id'];
