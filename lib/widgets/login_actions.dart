@@ -45,7 +45,7 @@ class _LoginActionsState extends State<LoginActions> {
       var errorMessage = 'Authentication failed.';
       if (error.toString().contains('User not found') ||
           error.toString().contains('Wrong password'))
-        errorMessage = 'Incorrect username or password.';
+        errorMessage = 'Incorrect email or password.';
       _showDialog(errorMessage);
     } catch (error) {
       _showDialog('Authentication failed. Please try again later.');
