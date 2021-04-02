@@ -165,7 +165,7 @@ class _LoginActionsState extends State<LoginActions> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    print("Username: waxmann.sergiu@me.com");
+                    print("Email: waxmann.sergiu@me.com");
                     print("Password: codeitpass");
                   },
                   child: Text(
