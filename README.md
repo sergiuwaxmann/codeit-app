@@ -2,7 +2,7 @@
 
 ## Flutter UI (PHP Back-end for Login)
 
-I built a fully responsive concept application UI for people who want to start learning programming / move to the IT (Information Technology) field but don’t know where to start in Flutter.
+I built a concept application UI in Flutter for people who want to start learning programming / move to the IT field but don’t know where to start.
 
 ![](assets/images/showcase.jpg)
 
